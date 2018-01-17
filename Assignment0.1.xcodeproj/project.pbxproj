@@ -14,6 +14,7 @@
 		CB06FC92200DD22000CCBAEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB06FC90200DD22000CCBAEC /* LaunchScreen.storyboard */; };
 		CB06FC9D200DD22000CCBAEC /* Assignment0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */; };
 		CB06FCA8200DD22000CCBAEC /* Assignment0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */; };
+		CBD9102E200F62C80039FF10 /* NewFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD9102D200F62C80039FF10 /* NewFunctionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		CB06FCA3200DD22000CCBAEC /* Assignment0.1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment0.1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment0_1UITests.swift; sourceTree = "<group>"; };
 		CB06FCA9200DD22000CCBAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBD9102D200F62C80039FF10 /* NewFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFunctionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				CB06FC87200DD22000CCBAEC /* AppDelegate.swift */,
 				CB06FC89200DD22000CCBAEC /* ViewController.swift */,
+				CBD9102D200F62C80039FF10 /* NewFunctionController.swift */,
 				CB06FC8B200DD22000CCBAEC /* Main.storyboard */,
 				CB06FC8E200DD22000CCBAEC /* Assets.xcassets */,
 				CB06FC90200DD22000CCBAEC /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				CB06FC8A200DD22000CCBAEC /* ViewController.swift in Sources */,
 				CB06FC88200DD22000CCBAEC /* AppDelegate.swift in Sources */,
+				CBD9102E200F62C80039FF10 /* NewFunctionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

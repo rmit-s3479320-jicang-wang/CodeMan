@@ -40,14 +40,13 @@
                                 <state key="normal" title="Menu"/>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZM4-RN-yD8">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bjo-ar-59h">
-                                <rect key="frame" x="313" y="4" width="46" height="36"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="B4f-R1-7Q9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qx4-ep-Jkv">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <segue destination="fir-sk-IAT" kind="push" id="r0q-Be-8wT"/>
+                                    <segue destination="fir-sk-IAT" kind="push" id="U8g-od-CdB"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -100,7 +99,7 @@
                                 <rect key="frame" x="0.0" y="217" width="375" height="247"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kVV-Xi-chb">
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="kVV-Xi-chb">
                                 <rect key="frame" x="0.0" y="161" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -109,14 +108,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X7F-ty-Oxd"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6xv-7e-sq9">
-                        <connections>
-                            <outlet property="titleView" destination="kVV-Xi-chb" id="0E3-lA-KJj"/>
-                        </connections>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="6xv-7e-sq9"/>
                     <connections>
                         <outlet property="datePickerTxt" destination="dpF-DM-2Lj" id="rgJ-4m-EVc"/>
-                        <outlet property="searchBarMap" destination="kVV-Xi-chb" id="jyr-Yc-15r"/>
+                        <outlet property="mapView" destination="25n-Oc-QlQ" id="Jbo-mz-JrE"/>
+                        <outlet property="searchBarMap" destination="kVV-Xi-chb" id="PXZ-xY-6zd"/>
                         <outlet property="searchDisplayController" destination="XTT-Fa-ZkL" id="NtK-0q-Ztk"/>
                     </connections>
                 </viewController>

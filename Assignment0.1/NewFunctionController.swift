@@ -14,7 +14,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     
    
     @IBOutlet weak var datePickerTxt: UITextField!
-    @IBOutlet weak var searchBarMap: UISearchBar!
+    @IBOutlet var searchBarMap: UISearchBar!
     
     @IBOutlet weak var mapView: MKMapView!
     let datePicker = UIDatePicker()
@@ -69,11 +69,11 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
                 anno.coordinate = (placemark?.location?.coordinate)!
                 anno.title = self.searchBarMap.text!
                 
-                //let span = MKCoordinateSpanMake(0.075, 0.075)
-                //let region = MKCoordinateRegion(center: anno.coordinate, span: span)
+                let span = MKCoordinateSpanMake(0.075, 0.075)
+                let region = MKCoordinateRegion(center: anno.coordinate, span: span)
                 
                 
-                //self.mapView.setRegion(region, animated: true)
+                self.mapView.setRegion(region, animated: true)
                 self.mapView.addAnnotation(anno)
                 self.mapView.selectAnnotation(anno, animated: true)
                 

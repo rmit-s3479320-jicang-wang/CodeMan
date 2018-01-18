@@ -15,6 +15,7 @@
 		CB06FC9D200DD22000CCBAEC /* Assignment0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */; };
 		CB06FCA8200DD22000CCBAEC /* Assignment0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */; };
 		CBD9102E200F62C80039FF10 /* NewFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD9102D200F62C80039FF10 /* NewFunctionController.swift */; };
+		CBE2B4B02010A26200025786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE2B4AF2010A26200025786 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment0_1UITests.swift; sourceTree = "<group>"; };
 		CB06FCA9200DD22000CCBAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBD9102D200F62C80039FF10 /* NewFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFunctionController.swift; sourceTree = "<group>"; };
+		CBE2B4AF2010A26200025786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE2B4B02010A26200025786 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 				CB06FC9B200DD22000CCBAEC /* Assignment0.1Tests */,
 				CB06FCA6200DD22000CCBAEC /* Assignment0.1UITests */,
 				CB06FC85200DD22000CCBAEC /* Products */,
+				CBE2B4AE2010A26200025786 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +130,14 @@
 				CB06FCA9200DD22000CCBAEC /* Info.plist */,
 			);
 			path = Assignment0.1UITests;
+			sourceTree = "<group>";
+		};
+		CBE2B4AE2010A26200025786 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2B4AF2010A26200025786 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +209,11 @@
 					CB06FC83200DD22000CCBAEC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					CB06FC97200DD22000CCBAEC = {
 						CreatedOnToolsVersion = 9.2;

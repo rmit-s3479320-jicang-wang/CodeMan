@@ -7,20 +7,23 @@
 //
 
 import UIKit
-
-class NewFunctionController: UIViewController {
+import MapKit
+class NewFunctionController: UIViewController, UISearchBarDelegate{
     
     
     
    
     @IBOutlet weak var datePickerTxt: UITextField!
+    @IBOutlet weak var searchBarMap: UISearchBar!
     
+    @IBOutlet weak var mapView: MKMapView!
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         createDatePicker()
+        searchBarMap.delegate = self
     }
     
     func createDatePicker(){
@@ -54,6 +57,36 @@ class NewFunctionController: UIViewController {
         datePickerTxt.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBarMap.resignFirstResponder()
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(searchBarMap.text!) { (placemarks:[CLPlacemark]?,error: Error?) in
+            if error == nil{
+                let placemark = placemarks?.first
+                let anno = MKPointAnnotation()
+                anno.coordinate = (placemark?.location?.coordinate)!
+                anno.title = self.searchBarMap.text!
+                
+                //let span = MKCoordinateSpanMake(0.075, 0.075)
+                //let region = MKCoordinateRegion(center: anno.coordinate, span: span)
+                
+                
+                //self.mapView.setRegion(region, animated: true)
+                self.mapView.addAnnotation(anno)
+                self.mapView.selectAnnotation(anno, animated: true)
+                
+                
+                
+            }else{
+                print(error?.localizedDescription ?? "error")
+            }
+            
+            }
+        
+    }
+    
     
 }
 

@@ -13,7 +13,6 @@
         <!--My Event-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Assignment0_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -56,6 +55,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="92.203898050974516"/>
         </scene>
@@ -96,6 +96,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kVV-Xi-chb">
+                                <rect key="frame" x="0.0" y="161" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="25n-Oc-QlQ">
+                                <rect key="frame" x="0.0" y="217" width="375" height="247"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X7F-ty-Oxd"/>
@@ -103,9 +112,20 @@
                     <navigationItem key="navigationItem" title="Add Event" id="6xv-7e-sq9"/>
                     <connections>
                         <outlet property="datePickerTxt" destination="dpF-DM-2Lj" id="rgJ-4m-EVc"/>
+                        <outlet property="mapView" destination="25n-Oc-QlQ" id="WrP-OE-fWM"/>
+                        <outlet property="searchBarMap" destination="kVV-Xi-chb" id="jyr-Yc-15r"/>
+                        <outlet property="searchDisplayController" destination="XTT-Fa-ZkL" id="NtK-0q-Ztk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnN-Yx-fLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="XTT-Fa-ZkL">
+                    <connections>
+                        <outlet property="delegate" destination="fir-sk-IAT" id="uUf-yf-6iB"/>
+                        <outlet property="searchContentsController" destination="fir-sk-IAT" id="5uB-U0-WIM"/>
+                        <outlet property="searchResultsDataSource" destination="fir-sk-IAT" id="chE-dI-kf6"/>
+                        <outlet property="searchResultsDelegate" destination="fir-sk-IAT" id="NQQ-jO-49Q"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1008.8" y="-97.601199400299862"/>
         </scene>

@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="92.203898050974516"/>
         </scene>
-        <!--Add Event-->
+        <!--New Function Controller-->
         <scene sceneID="MGw-m5-5J8">
             <objects>
                 <viewController id="fir-sk-IAT" customClass="NewFunctionController" customModule="Assignment0_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,23 +96,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="25n-Oc-QlQ">
+                                <rect key="frame" x="0.0" y="217" width="375" height="247"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kVV-Xi-chb">
                                 <rect key="frame" x="0.0" y="161" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="25n-Oc-QlQ">
-                                <rect key="frame" x="0.0" y="217" width="375" height="247"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X7F-ty-Oxd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Event" id="6xv-7e-sq9"/>
+                    <navigationItem key="navigationItem" id="6xv-7e-sq9">
+                        <connections>
+                            <outlet property="titleView" destination="kVV-Xi-chb" id="0E3-lA-KJj"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="datePickerTxt" destination="dpF-DM-2Lj" id="rgJ-4m-EVc"/>
-                        <outlet property="mapView" destination="25n-Oc-QlQ" id="WrP-OE-fWM"/>
                         <outlet property="searchBarMap" destination="kVV-Xi-chb" id="jyr-Yc-15r"/>
                         <outlet property="searchDisplayController" destination="XTT-Fa-ZkL" id="NtK-0q-Ztk"/>
                     </connections>

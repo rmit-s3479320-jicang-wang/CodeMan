@@ -58,7 +58,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
         self.view.endEditing(true)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBarMap.resignFirstResponder()
         
         let geocoder = CLGeocoder()

@@ -19,12 +19,28 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var mapView: MKMapView!
     let datePicker = UIDatePicker()
     
+    @IBOutlet weak var textField: UITextField!
+    
+    @IBAction func addpressed(_ sender: UIBarButtonItem) {
+        
+        if(textField.text != nil) && textField.text != ""{
+            todoList?.append(textField.text!)
+            textField.text = ""
+            textField.placeholder = "Add more?"
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         createDatePicker()
         searchBarMap.delegate = self
+        
+        
     }
+    
     
     func createDatePicker(){
         

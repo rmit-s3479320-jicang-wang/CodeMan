@@ -8,17 +8,41 @@
 
 import Foundation
 
-var todoList:[String]?
+let kTitle = "title"
+let kDate = "date"
+let kEventId = "eventId"
+let kDateTimestamp = "dateTimestamp"
 
-func saveData(todoList:[String]){
+var todoList:Array<Dictionary<String, Any>>?
+
+func saveData(todoList:Array<Dictionary<String, Any>>){
     UserDefaults.standard.set(todoList, forKey: "todolist")
+    UserDefaults.standard.synchronize()
 }
 
-func fetchData() -> [String]?{
-    if let todo = UserDefaults.standard.array(forKey: "todoList") as? [String]{
+func fetchData() -> Array<Dictionary<String, Any>>?{
+    if let todo = UserDefaults.standard.array(forKey: "todolist") as? Array<Dictionary<String, Any>>{
         return todo
     }
-    else{
-        return nil
-    }
+    return nil
+}
+
+func fetchFutureData() -> Array<Dictionary<String, Any>>?{
+    
+    let nowTime = NSDate().timeIntervalSince1970
+    let resut = todoList?.filter({ (dic) -> Bool in
+        let time = dic[kDateTimestamp] as! TimeInterval
+        return time >= nowTime
+    })
+    return resut
+}
+
+func fetchPastData() -> Array<Dictionary<String, Any>>?{
+    
+    let nowTime = NSDate().timeIntervalSince1970
+    let resut = todoList?.filter({ (dic) -> Bool in
+        let time = dic[kDateTimestamp] as! TimeInterval
+        return time < nowTime
+    })
+    return resut
 }

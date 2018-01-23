@@ -56,7 +56,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     func createDatePicker(){
         
         datePicker.datePickerMode = .date
-//        datePicker.minimumDate = NSDate() as Date
+        datePicker.minimumDate = NSDate() as Date
         //toolbar
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

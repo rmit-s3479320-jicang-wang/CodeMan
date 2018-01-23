@@ -76,7 +76,6 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
                             let crrId = dic[kEventId] as! String
                             if tempId == crrId{
                                 todoList?.remove(at: i)
-                                print("删除了全部中的元素")
                                 break
                             }
                             i+=1

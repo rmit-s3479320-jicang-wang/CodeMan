@@ -47,6 +47,10 @@ class Event : NSObject{
         return format.string(from: date)
     }
     
+    func date() -> Date {
+        return Date(timeIntervalSince1970: self.timestamp)
+    }
+    
     func day() -> Int {
         let nowTime = Date().timeIntervalSince1970
         return Int(floor((self.timestamp-nowTime)/(60*60*24)))

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class EventInfoViewController: UIViewController {
+class EventInfoViewController: UIViewController, EventEditDelegate {
 
     var event:Event = Event()
     @IBOutlet weak var dayLabel: UILabel!
@@ -31,21 +31,7 @@ class EventInfoViewController: UIViewController {
         self.dayLabel.text = "00"
         self.hoursLabel.text = "00"
         self.minutesLabel.text = "00"
-        self.dateLabel.text = self.event.dateToString()
-        self.titleLabel.text = self.event.title
-        self.descLabel.text = self.event.desc
-        self.addressLabel.text = self.event.address
-        
-        let anno = MKPointAnnotation()
-        anno.coordinate = CLLocationCoordinate2DMake(self.event.latitude, self.event.longitude)
-        anno.title = self.event.address
-        
-        let span = MKCoordinateSpanMake(0.075, 0.075)
-        let region = MKCoordinateRegion(center: anno.coordinate, span: span)
-        
-        self.mapView.setRegion(region, animated: true)
-        self.mapView.addAnnotation(anno)
-        self.mapView.selectAnnotation(anno, animated: true)
+        updateEvent(event: self.event)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,14 +86,32 @@ class EventInfoViewController: UIViewController {
     
     @objc func editPressed() {
         
+        let story = UIStoryboard(name: "Main", bundle:Bundle.main)
+        let vc = story.instantiateViewController(withIdentifier: "EventEdit") as! EventEditViewController
+        vc.setEvent(event: self.event)
+        vc.delegate = self
+        self.show(vc, sender: nil)
     }
     
-    @IBAction func deleteBtnPressed() {
+    // MARK: - EventEditDelegate
+    func updateEvent(event: Event) {
+        self.event = event
         
-    }
-    
-    @IBAction func shareBtnPressed() {
+        self.dateLabel.text = self.event.dateToString()
+        self.titleLabel.text = self.event.title
+        self.descLabel.text = self.event.desc
+        self.addressLabel.text = self.event.address
         
+        let anno = MKPointAnnotation()
+        anno.coordinate = CLLocationCoordinate2DMake(self.event.latitude, self.event.longitude)
+        anno.title = self.event.address
+        
+        let span = MKCoordinateSpanMake(0.075, 0.075)
+        let region = MKCoordinateRegion(center: anno.coordinate, span: span)
+        
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.addAnnotation(anno)
+        self.mapView.selectAnnotation(anno, animated: true)
     }
     
 }

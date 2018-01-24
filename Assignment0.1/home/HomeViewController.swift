@@ -95,7 +95,7 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
             let story = UIStoryboard(name: "Main", bundle:Bundle.main)
             let vc = story.instantiateViewController(withIdentifier: "EventInfo") as! EventInfoViewController
             vc.setEvent(event: event)
-            self.show(vc, sender: nil);
+            self.show(vc, sender: nil)
         }
     }
     

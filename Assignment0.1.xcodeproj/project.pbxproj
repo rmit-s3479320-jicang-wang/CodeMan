@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6D2599252016D4F700A740AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599242016D4F700A740AB /* HomeViewController.swift */; };
 		6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599272016D7F200A740AB /* TodoListCell.swift */; };
+		6DBAF2092018569500CBAB48 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF2082018569500CBAB48 /* EventEditViewController.swift */; };
 		6DDB35D62017116A00BA4D19 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35D52017116A00BA4D19 /* Event.swift */; };
 		6DDB35D920172A8300BA4D19 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */; };
 		6DDB35DB20175D8D00BA4D19 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35DA20175D8D00BA4D19 /* Alert.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		6D2599242016D4F700A740AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6D2599272016D7F200A740AB /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
+		6DBAF2082018569500CBAB48 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
 		6DDB35D52017116A00BA4D19 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		6DDB35DA20175D8D00BA4D19 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				6D2599242016D4F700A740AB /* HomeViewController.swift */,
 				CBD9102D200F62C80039FF10 /* NewFunctionController.swift */,
 				6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */,
+				6DBAF2082018569500CBAB48 /* EventEditViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DF3F9DE2017891100AD87E1 /* EventInfoViewController.swift in Sources */,
+				6DBAF2092018569500CBAB48 /* EventEditViewController.swift in Sources */,
 				6D2599252016D4F700A740AB /* HomeViewController.swift in Sources */,
 				6DDB35D920172A8300BA4D19 /* FeatureViewController.swift in Sources */,
 				6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */,

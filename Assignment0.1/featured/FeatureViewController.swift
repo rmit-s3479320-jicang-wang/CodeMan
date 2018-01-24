@@ -17,17 +17,13 @@ class FeatureViewController: UIViewController {
     
     @IBAction func clickDeleteAllBtn(){
         
-        let alertController = UIAlertController(title: "Do you want to delete the event?",
-                                                message: "",
-                                                preferredStyle: UIAlertControllerStyle.alert)
+        self.showAlert(title: "",
+                       message: "Do you want to delete the event?",
+                       sureHandler: {
+                        // delete all
+                        todoList?.removeAll()
+        })
         
-        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
-            
-            // delete all
-            todoList?.removeAll()
-        }))
-        self.present(alertController, animated: true, completion: nil)
     }
 
 }

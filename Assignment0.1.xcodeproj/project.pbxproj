@@ -10,14 +10,13 @@
 		6D2599252016D4F700A740AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599242016D4F700A740AB /* HomeViewController.swift */; };
 		6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599272016D7F200A740AB /* TodoListCell.swift */; };
 		6D8342A120187E4F00E48E3B /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8342A020187E4F00E48E3B /* ContactsViewController.swift */; };
+		6D8342B12018870800E48E3B /* Assignment0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8342B02018870800E48E3B /* Assignment0_1UITests.swift */; };
 		6DBAF2092018569500CBAB48 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF2082018569500CBAB48 /* EventEditViewController.swift */; };
 		6DDB35D920172A8300BA4D19 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */; };
 		6DE221B22018745B00171C28 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE221B12018745B00171C28 /* Tool.swift */; };
 		6DF3F9DE2017891100AD87E1 /* EventInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */; };
 		CB06FC88200DD22000CCBAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC87200DD22000CCBAEC /* AppDelegate.swift */; };
 		CB06FC8F200DD22000CCBAEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB06FC8E200DD22000CCBAEC /* Assets.xcassets */; };
-		CB06FC9D200DD22000CCBAEC /* Assignment0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */; };
-		CB06FCA8200DD22000CCBAEC /* Assignment0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */; };
 		CBD0CFE82015E5DF00151DB4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0CFE72015E5DF00151DB4 /* Constant.swift */; };
 		CBD9102E200F62C80039FF10 /* NewFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD9102D200F62C80039FF10 /* NewFunctionController.swift */; };
 		CBE2B4B02010A26200025786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE2B4AF2010A26200025786 /* MapKit.framework */; };
@@ -26,14 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CB06FC99200DD22000CCBAEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB06FC7C200DD22000CCBAEC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB06FC83200DD22000CCBAEC;
-			remoteInfo = Assignment0.1;
-		};
-		CB06FCA4200DD22000CCBAEC /* PBXContainerItemProxy */ = {
+		6D8342AB201886D900E48E3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CB06FC7C200DD22000CCBAEC /* Project object */;
 			proxyType = 1;
@@ -46,6 +38,9 @@
 		6D2599242016D4F700A740AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6D2599272016D7F200A740AB /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
 		6D8342A020187E4F00E48E3B /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		6D8342A6201886D900E48E3B /* Assignment0.1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment0.1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D8342AA201886D900E48E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D8342B02018870800E48E3B /* Assignment0_1UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment0_1UITests.swift; sourceTree = "<group>"; };
 		6DBAF2082018569500CBAB48 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
 		6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		6DE221B12018745B00171C28 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -54,12 +49,6 @@
 		CB06FC87200DD22000CCBAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB06FC8E200DD22000CCBAEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB06FC93200DD22000CCBAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB06FC98200DD22000CCBAEC /* Assignment0.1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment0.1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment0_1Tests.swift; sourceTree = "<group>"; };
-		CB06FC9E200DD22000CCBAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB06FCA3200DD22000CCBAEC /* Assignment0.1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment0.1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment0_1UITests.swift; sourceTree = "<group>"; };
-		CB06FCA9200DD22000CCBAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBD0CFE72015E5DF00151DB4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		CBD9102D200F62C80039FF10 /* NewFunctionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFunctionController.swift; sourceTree = "<group>"; };
 		CBE2B4AF2010A26200025786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -68,25 +57,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6D8342A3201886D900E48E3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB06FC81200DD22000CCBAEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CBE2B4B02010A26200025786 /* MapKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB06FC95200DD22000CCBAEC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB06FCA0200DD22000CCBAEC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,12 +131,20 @@
 			path = contacts;
 			sourceTree = "<group>";
 		};
+		6D8342A7201886D900E48E3B /* Assignment0.1UITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D8342B02018870800E48E3B /* Assignment0_1UITests.swift */,
+				6D8342AA201886D900E48E3B /* Info.plist */,
+			);
+			path = Assignment0.1UITests;
+			sourceTree = "<group>";
+		};
 		CB06FC7B200DD22000CCBAEC = {
 			isa = PBXGroup;
 			children = (
 				CB06FC86200DD22000CCBAEC /* Assignment0.1 */,
-				CB06FC9B200DD22000CCBAEC /* Assignment0.1Tests */,
-				CB06FCA6200DD22000CCBAEC /* Assignment0.1UITests */,
+				6D8342A7201886D900E48E3B /* Assignment0.1UITests */,
 				CB06FC85200DD22000CCBAEC /* Products */,
 				CBE2B4AE2010A26200025786 /* Frameworks */,
 			);
@@ -164,8 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				CB06FC84200DD22000CCBAEC /* Assignment0.1.app */,
-				CB06FC98200DD22000CCBAEC /* Assignment0.1Tests.xctest */,
-				CB06FCA3200DD22000CCBAEC /* Assignment0.1UITests.xctest */,
+				6D8342A6201886D900E48E3B /* Assignment0.1UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,24 +172,6 @@
 			path = Assignment0.1;
 			sourceTree = "<group>";
 		};
-		CB06FC9B200DD22000CCBAEC /* Assignment0.1Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */,
-				CB06FC9E200DD22000CCBAEC /* Info.plist */,
-			);
-			path = Assignment0.1Tests;
-			sourceTree = "<group>";
-		};
-		CB06FCA6200DD22000CCBAEC /* Assignment0.1UITests */ = {
-			isa = PBXGroup;
-			children = (
-				CB06FCA7200DD22000CCBAEC /* Assignment0_1UITests.swift */,
-				CB06FCA9200DD22000CCBAEC /* Info.plist */,
-			);
-			path = Assignment0.1UITests;
-			sourceTree = "<group>";
-		};
 		CBE2B4AE2010A26200025786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +183,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6D8342A5201886D900E48E3B /* Assignment0.1UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D8342AD201886D900E48E3B /* Build configuration list for PBXNativeTarget "Assignment0.1UITests" */;
+			buildPhases = (
+				6D8342A2201886D900E48E3B /* Sources */,
+				6D8342A3201886D900E48E3B /* Frameworks */,
+				6D8342A4201886D900E48E3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D8342AC201886D900E48E3B /* PBXTargetDependency */,
+			);
+			name = Assignment0.1UITests;
+			productName = Assignment0.1UITests;
+			productReference = 6D8342A6201886D900E48E3B /* Assignment0.1UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CB06FC83200DD22000CCBAEC /* Assignment0.1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB06FCAC200DD22000CCBAEC /* Build configuration list for PBXNativeTarget "Assignment0.1" */;
@@ -229,42 +218,6 @@
 			productReference = CB06FC84200DD22000CCBAEC /* Assignment0.1.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CB06FC97200DD22000CCBAEC /* Assignment0.1Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB06FCAF200DD22000CCBAEC /* Build configuration list for PBXNativeTarget "Assignment0.1Tests" */;
-			buildPhases = (
-				CB06FC94200DD22000CCBAEC /* Sources */,
-				CB06FC95200DD22000CCBAEC /* Frameworks */,
-				CB06FC96200DD22000CCBAEC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CB06FC9A200DD22000CCBAEC /* PBXTargetDependency */,
-			);
-			name = Assignment0.1Tests;
-			productName = Assignment0.1Tests;
-			productReference = CB06FC98200DD22000CCBAEC /* Assignment0.1Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CB06FCA2200DD22000CCBAEC /* Assignment0.1UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB06FCB2200DD22000CCBAEC /* Build configuration list for PBXNativeTarget "Assignment0.1UITests" */;
-			buildPhases = (
-				CB06FC9F200DD22000CCBAEC /* Sources */,
-				CB06FCA0200DD22000CCBAEC /* Frameworks */,
-				CB06FCA1200DD22000CCBAEC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CB06FCA5200DD22000CCBAEC /* PBXTargetDependency */,
-			);
-			name = Assignment0.1UITests;
-			productName = Assignment0.1UITests;
-			productReference = CB06FCA3200DD22000CCBAEC /* Assignment0.1UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -275,6 +228,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = RMIT;
 				TargetAttributes = {
+					6D8342A5201886D900E48E3B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CB06FC83200DD22000CCBAEC;
+					};
 					CB06FC83200DD22000CCBAEC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -283,16 +241,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					CB06FC97200DD22000CCBAEC = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = CB06FC83200DD22000CCBAEC;
-					};
-					CB06FCA2200DD22000CCBAEC = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = CB06FC83200DD22000CCBAEC;
 					};
 				};
 			};
@@ -310,13 +258,19 @@
 			projectRoot = "";
 			targets = (
 				CB06FC83200DD22000CCBAEC /* Assignment0.1 */,
-				CB06FC97200DD22000CCBAEC /* Assignment0.1Tests */,
-				CB06FCA2200DD22000CCBAEC /* Assignment0.1UITests */,
+				6D8342A5201886D900E48E3B /* Assignment0.1UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6D8342A4201886D900E48E3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB06FC82200DD22000CCBAEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,23 +281,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB06FC96200DD22000CCBAEC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB06FCA1200DD22000CCBAEC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6D8342A2201886D900E48E3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D8342B12018870800E48E3B /* Assignment0_1UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB06FC80200DD22000CCBAEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,38 +309,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB06FC94200DD22000CCBAEC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB06FC9D200DD22000CCBAEC /* Assignment0_1Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB06FC9F200DD22000CCBAEC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB06FCA8200DD22000CCBAEC /* Assignment0_1UITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CB06FC9A200DD22000CCBAEC /* PBXTargetDependency */ = {
+		6D8342AC201886D900E48E3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CB06FC83200DD22000CCBAEC /* Assignment0.1 */;
-			targetProxy = CB06FC99200DD22000CCBAEC /* PBXContainerItemProxy */;
-		};
-		CB06FCA5200DD22000CCBAEC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB06FC83200DD22000CCBAEC /* Assignment0.1 */;
-			targetProxy = CB06FCA4200DD22000CCBAEC /* PBXContainerItemProxy */;
+			targetProxy = 6D8342AB201886D900E48E3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		6D8342AE201886D900E48E3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Assignment0.1UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1.Assignment0-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Assignment0.1;
+			};
+			name = Debug;
+		};
+		6D8342AF201886D900E48E3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Assignment0.1UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1.Assignment0-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Assignment0.1;
+			};
+			name = Release;
+		};
 		CB06FCAA200DD22000CCBAEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -528,71 +483,18 @@
 			};
 			name = Release;
 		};
-		CB06FCB0200DD22000CCBAEC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assignment0.1Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Assignment0.1.app/Assignment0.1";
-			};
-			name = Debug;
-		};
-		CB06FCB1200DD22000CCBAEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assignment0.1Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Assignment0.1.app/Assignment0.1";
-			};
-			name = Release;
-		};
-		CB06FCB3200DD22000CCBAEC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assignment0.1UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Assignment0.1;
-			};
-			name = Debug;
-		};
-		CB06FCB4200DD22000CCBAEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assignment0.1UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.s3479430.Assignment0-1UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Assignment0.1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6D8342AD201886D900E48E3B /* Build configuration list for PBXNativeTarget "Assignment0.1UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D8342AE201886D900E48E3B /* Debug */,
+				6D8342AF201886D900E48E3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CB06FC7F200DD22000CCBAEC /* Build configuration list for PBXProject "Assignment0.1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -607,24 +509,6 @@
 			buildConfigurations = (
 				CB06FCAD200DD22000CCBAEC /* Debug */,
 				CB06FCAE200DD22000CCBAEC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB06FCAF200DD22000CCBAEC /* Build configuration list for PBXNativeTarget "Assignment0.1Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB06FCB0200DD22000CCBAEC /* Debug */,
-				CB06FCB1200DD22000CCBAEC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB06FCB2200DD22000CCBAEC /* Build configuration list for PBXNativeTarget "Assignment0.1UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB06FCB3200DD22000CCBAEC /* Debug */,
-				CB06FCB4200DD22000CCBAEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

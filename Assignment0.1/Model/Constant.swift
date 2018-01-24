@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+// MARK: - Event
 let kTitle = "title"
 let kDesc = "desc"
 let kDateTimestamp = "dateTimestamp"
@@ -66,8 +67,10 @@ class Event : NSObject{
         return Int(floor((self.timestamp-nowTime)/60.0))
     }
 }
-var todoList:Array<Event>?
 
+var todoList: Array<Event>?
+
+// MARK: - Event fetch
 func saveData(todoList:Array<Event>){
     var list : [Dictionary<String , Any>] = [Dictionary<String, Any>]()
     for event in todoList{
@@ -122,4 +125,14 @@ func fetchPastData() -> Array<Event>?{
         return time < nowTime
     })
     return resut
+}
+
+func fetchEvent(identifier: String) -> Event? {
+    if let todo = todoList {
+        let event = todo.filter({ (event) -> Bool in
+            return event.identifier == identifier
+        })
+        return event.first
+    }
+    return nil
 }

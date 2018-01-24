@@ -22,6 +22,8 @@ class FeatureViewController: UIViewController {
                        sureHandler: {
                         // delete all
                         todoList?.removeAll()
+                        // delete all notify
+                        removeAllNotify()
         })
         
     }

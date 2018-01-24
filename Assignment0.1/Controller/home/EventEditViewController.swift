@@ -14,6 +14,7 @@ protocol EventEditDelegate {
     func updateEvent(event:Event)
 }
 
+// event edit controller
 class EventEditViewController: UIViewController, UISearchBarDelegate{
 
     var event: Event = Event()

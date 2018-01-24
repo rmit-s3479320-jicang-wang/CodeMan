@@ -70,6 +70,7 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 var i:Int = 0
                 for tempEvent in todoList!{
                     if event.identifier == tempEvent.identifier{
+                        removeNotify(event: event)
                         todoList?.remove(at: i)
                         break
                     }

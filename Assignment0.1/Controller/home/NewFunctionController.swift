@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import EventKit
 
+// add event controller
 class NewFunctionController: UIViewController, UISearchBarDelegate{
     
     // title
@@ -56,6 +57,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
         self.event.identifier = NSUUID().uuidString
         
         todoList?.insert(self.event, at: 0)
+        registerNotify(event: self.event)
         self.navigationController?.popViewController(animated: true)
     }
     

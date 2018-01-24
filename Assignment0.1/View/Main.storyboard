@@ -94,7 +94,7 @@
         <!--Me-->
         <scene sceneID="NKt-8b-19e">
             <objects>
-                <viewController id="QLE-vB-30W" sceneMemberID="viewController">
+                <viewController id="QLE-vB-30W" customClass="ContactsViewController" customModule="Assignment0_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WLY-l2-NqJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

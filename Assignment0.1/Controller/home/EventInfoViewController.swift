@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+// event info controller
 class EventInfoViewController: UIViewController, EventEditDelegate {
 
     var event:Event = Event()
@@ -96,6 +97,8 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     // MARK: - EventEditDelegate
     func updateEvent(event: Event) {
         self.event = event
+        // update notify
+        registerNotify(event: event)
         
         self.dateLabel.text = self.event.dateToString()
         self.titleLabel.text = self.event.title

@@ -11,6 +11,8 @@
 		6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599272016D7F200A740AB /* TodoListCell.swift */; };
 		6DDB35D62017116A00BA4D19 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35D52017116A00BA4D19 /* Event.swift */; };
 		6DDB35D920172A8300BA4D19 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */; };
+		6DDB35DB20175D8D00BA4D19 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB35DA20175D8D00BA4D19 /* Alert.swift */; };
+		6DF3F9DE2017891100AD87E1 /* EventInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */; };
 		CB06FC88200DD22000CCBAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC87200DD22000CCBAEC /* AppDelegate.swift */; };
 		CB06FC8F200DD22000CCBAEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB06FC8E200DD22000CCBAEC /* Assets.xcassets */; };
 		CB06FC9D200DD22000CCBAEC /* Assignment0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC9C200DD22000CCBAEC /* Assignment0_1Tests.swift */; };
@@ -44,6 +46,8 @@
 		6D2599272016D7F200A740AB /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
 		6DDB35D52017116A00BA4D19 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DDB35D820172A8300BA4D19 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
+		6DDB35DA20175D8D00BA4D19 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoViewController.swift; sourceTree = "<group>"; };
 		CB06FC84200DD22000CCBAEC /* Assignment0.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment0.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB06FC87200DD22000CCBAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB06FC8E200DD22000CCBAEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				6D2599262016D7C000A740AB /* view */,
 				6D2599242016D4F700A740AB /* HomeViewController.swift */,
 				CBD9102D200F62C80039FF10 /* NewFunctionController.swift */,
+				6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				CB06FC93200DD22000CCBAEC /* Info.plist */,
 				CBD0CFE72015E5DF00151DB4 /* Constant.swift */,
 				6DDB35D52017116A00BA4D19 /* Event.swift */,
+				6DDB35DA20175D8D00BA4D19 /* Alert.swift */,
 			);
 			path = Assignment0.1;
 			sourceTree = "<group>";
@@ -315,12 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DF3F9DE2017891100AD87E1 /* EventInfoViewController.swift in Sources */,
 				6D2599252016D4F700A740AB /* HomeViewController.swift in Sources */,
 				6DDB35D920172A8300BA4D19 /* FeatureViewController.swift in Sources */,
 				6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */,
 				CB06FC88200DD22000CCBAEC /* AppDelegate.swift in Sources */,
 				CBD9102E200F62C80039FF10 /* NewFunctionController.swift in Sources */,
 				6DDB35D62017116A00BA4D19 /* Event.swift in Sources */,
+				6DDB35DB20175D8D00BA4D19 /* Alert.swift in Sources */,
 				CBD0CFE82015E5DF00151DB4 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

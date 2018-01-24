@@ -20,8 +20,8 @@ class TodoListCell: UITableViewCell {
         self.timeLabel.text = nil;
     }
     
-    public func setCellData(data: Dictionary<String, Any>){
-        self.titleLabel.text = data[kTitle] as? String;
-        self.timeLabel.text = data[kDate] as? String;
+    public func setCellData(event: Event){
+        self.titleLabel.text = event.title
+        self.timeLabel.text = event.dateToString()
     }
 }

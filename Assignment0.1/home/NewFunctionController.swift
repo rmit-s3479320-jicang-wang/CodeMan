@@ -12,14 +12,18 @@ import EventKit
 
 class NewFunctionController: UIViewController, UISearchBarDelegate{
     
-   
+    // title
+    @IBOutlet weak var textField: UITextField!
+    // desc
+    @IBOutlet weak var descTextField: UITextField!
+    // datetime
     @IBOutlet weak var datePickerTxt: UITextField!
     @IBOutlet var searchBarMap: UISearchBar!
-    
     @IBOutlet weak var mapView: MKMapView!
+    
     let datePicker = UIDatePicker()
     
-    @IBOutlet weak var textField: UITextField!
+    let event = Event()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,32 +34,34 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     // MARK: - add todo list
     @IBAction func addpressed(_ sender: UIBarButtonItem) {
         
-        if(textField.text != nil) && textField.text != ""{
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            let date = dateFormatter.date(from: datePickerTxt.text!)
-            addEvent(title: textField.text!, date: date! as NSDate, completeHandler: {success, eventId in
-                if success {
-                    
-                    let todoData = [kTitle: self.textField.text!,
-                                    kDate: self.datePickerTxt.text!,
-                                    kDateTimestamp: date!.timeIntervalSince1970,
-                                    kEventId: eventId!] as [String : Any]
-                    todoList?.insert(todoData, at: 0)
-                    self.textField.text = ""
-                    self.textField.placeholder = "Add more?"
-                    self.navigationController?.popViewController(animated: true)
-                }
-            })
+        if textField.text == nil || textField.text == ""{
+            showAlert(message: "Please enter the title!")
+            return
         }
+        if datePickerTxt.text == nil || datePickerTxt.text == ""{
+            showAlert(message: "Please enter the datetime!")
+            return
+        }
+        if descTextField.text == nil || descTextField.text == ""{
+            showAlert(message: "Please enter the describe!")
+            return
+        }
+        if event.address == ""{
+            showAlert(message: "Please enter the address!")
+            return
+        }
+        
+        self.event.title = textField.text!
+        self.event.desc = descTextField.text!
+        
+        todoList?.insert(self.event, at: 0)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - DatePicker
     func createDatePicker(){
         
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         datePicker.minimumDate = NSDate() as Date
         //toolbar
         let toolbar = UIToolbar()
@@ -73,10 +79,11 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     }
     
     @objc func donePressed(){
+        self.event.timestamp = self.datePicker.date.timeIntervalSince1970
         // formate date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
+        dateFormatter.timeStyle = .long
         
         datePickerTxt.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
@@ -95,6 +102,9 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
                     let anno = MKPointAnnotation()
                     anno.coordinate = (placemark?.location?.coordinate)!
                     anno.title = addressName
+                    self.event.address = addressName
+                    self.event.latitude = (placemark?.location?.coordinate.latitude)!
+                    self.event.longitude = (placemark?.location?.coordinate.longitude)!
                     
                     let span = MKCoordinateSpanMake(0.075, 0.075)
                     let region = MKCoordinateRegion(center: anno.coordinate, span: span)

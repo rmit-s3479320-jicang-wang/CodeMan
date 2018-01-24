@@ -13,7 +13,7 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    var list: Array<Dictionary<String, Any>>?
+    var list: Array<Event>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +32,14 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
             if let todo = fetchFutureData(){
                 list = todo
             }else{
-                list = [Dictionary<String, String>]()
+                list = []
             }
         }else{
             // Past
             if let todo = fetchPastData(){
                 list = todo
             }else{
-                list = [Dictionary<String, String>]()
+                list = []
             }
         }
         self.tableView.reloadData()
@@ -57,35 +57,27 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath) as! TodoListCell
         if let todo = list{
-            let data = todo[indexPath.row]
-            cell.setCellData(data: data);
+            let event = todo[indexPath.row]
+            cell.setCellData(event: event);
         }
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             if let todo = list{
-                let data = todo[indexPath.row]
-                let eventId = data[kEventId]
-                removeEvent(eventIds: [eventId! as! String], completeHandler: { (success) in
-                    if success {
-                        let dic = self.list![indexPath.row]
-                        var i:Int = 0
-                        for tempDic in todoList!{
-                            let tempId = tempDic[kEventId] as! String
-                            let crrId = dic[kEventId] as! String
-                            if tempId == crrId{
-                                todoList?.remove(at: i)
-                                break
-                            }
-                            i+=1
-                        }
-                        
-                        self.list?.remove(at: indexPath.row)
-                        tableView.reloadData()
-                    }
-                })
                 
+                let event = todo[indexPath.row]
+                var i:Int = 0
+                for tempEvent in todoList!{
+                    if event.identifier == tempEvent.identifier{
+                        todoList?.remove(at: i)
+                        break
+                    }
+                    i+=1
+                }
+                
+                self.list?.remove(at: indexPath.row)
+                tableView.reloadData()
             }
         }
     }
@@ -93,6 +85,18 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let todo = list{
+            let event = todo[indexPath.row]
+            let story = UIStoryboard(name: "Main", bundle:Bundle.main)
+            let vc = story.instantiateViewController(withIdentifier: "EventInfo") as! EventInfoViewController
+            vc.setEvent(event: event)
+            self.show(vc, sender: nil);
+        }
     }
     
     // MARK: - UISegmentControl Changed

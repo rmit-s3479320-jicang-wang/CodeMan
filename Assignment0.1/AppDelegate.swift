@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let todo = fetchData(){
             todoList = todo
         }else{
-            todoList = [Dictionary<String, String>]()
+            todoList = []
         }
         return true
     }

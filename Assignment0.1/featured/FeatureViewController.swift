@@ -25,16 +25,7 @@ class FeatureViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
             
             // delete all
-            var temp:Array<String> = []
-            for todo in todoList!{
-                let eventId = todo[kEventId] as! String
-                temp.append(eventId)
-            }
-            removeEvent(eventIds: temp, completeHandler: { (success) in
-                if success {
-                    todoList = [Dictionary<String, String>]()
-                }
-            })
+            todoList?.removeAll()
         }))
         self.present(alertController, animated: true, completion: nil)
     }

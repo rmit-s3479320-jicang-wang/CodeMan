@@ -1,13 +1,9 @@
-//
-//  Assignment0_1UITests.swift
-//  Assignment0.1UITests
-//
-//  Created by zb on 2018/1/24.
-//  Copyright © 2018年 RMIT. All rights reserved.
-//
 
 import XCTest
-
+//the test based on the app have no event added before, and in the added page,
+// when test the map search function, the keyboard must be oppened,it can be opened  by using(commond + shift + k)
+// if not open the keyboard when test the map saerch function. the test will fail
+//and the time can not at 11: 59 because it will influence the time add function
 class Assignment0_1UITests: XCTestCase {
     
     var app: XCUIApplication?
@@ -38,8 +34,8 @@ class Assignment0_1UITests: XCTestCase {
         self.app?.textFields["DateTime"].tap()
         
         let datePicker : XCUIElement = (self.app?.datePickers.element)!
-        datePicker.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "10")
-        datePicker.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "40")
+        datePicker.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "11")
+        datePicker.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "59")
         
         self.app?.buttons["Done"].tap()
         self.app?.textFields["Describe"].tap()

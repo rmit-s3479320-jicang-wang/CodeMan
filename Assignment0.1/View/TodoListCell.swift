@@ -1,10 +1,4 @@
-//
-//  TodoListCell.swift
-//  Assignment0.1
-//
-//  Created by zb on 2018/1/23.
-//  Copyright © 2018年 RMIT. All rights reserved.
-//
+
 
 import UIKit
 

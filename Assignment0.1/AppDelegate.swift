@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  Assignment0.1
-//
-//  Created by Jicang Wang on 1/16/18.
-//  Copyright © 2018 RMIT. All rights reserved.
-//
+
 
 import UIKit
 import UserNotifications

@@ -15,7 +15,7 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        super.viewWillAppear(animated)
         self.reloadData()
     }
     
@@ -51,7 +51,7 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath) as! TodoListCell
         if let todo = list{
             let event = todo[indexPath.row]
-            cell.setCellData(event: event);
+            cell.setCellData(event: event)
         }
         return cell
     }
@@ -88,6 +88,18 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // MARK: - UISegmentControl Changed
     @IBAction func segmentControlChanged(_ segmentControl:UISegmentedControl) {
         self.reloadData()
+    }
+    
+    @IBAction func deleteAllPressed() {
+        self.showAlert(title: "",
+                       message: "Do you want to delete the event?",
+                       sureHandler: {
+                        // delete all
+                        deleteAllEvent()
+                        // delete all notify
+                        removeAllNotify()
+                        self.reloadData()
+        })
     }
 
 }

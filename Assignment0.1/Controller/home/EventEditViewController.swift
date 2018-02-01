@@ -4,7 +4,7 @@ import MapKit
 
 protocol EventEditDelegate {
     
-    func updateEvent(event:EventObject)
+    func updateEventInfo(event:EventObject)
 }
 
 // event edit controller
@@ -48,7 +48,7 @@ class EventEditViewController: UIViewController, UISearchBarDelegate, UIImagePic
         createDatePicker()
         self.searchBarMap.delegate = self
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target:self, action:#selector(savePressed))
+        self.refreshRightBarButtonitems()
         
         self.titleTextField.text = self.event.title
         self.dateTextField.text = self.event.dateToString()
@@ -72,6 +72,18 @@ class EventEditViewController: UIViewController, UISearchBarDelegate, UIImagePic
 
     func setEvent(event: EventObject) {
         self.event = event;
+    }
+    
+    func refreshRightBarButtonitems() {
+        var str:String
+        if self.event.favourite {
+            str = "Cancel favourite";
+        }else{
+            str = "Favourite"
+        }
+        let item1 = UIBarButtonItem(barButtonSystemItem: .save, target:self, action:#selector(savePressed))
+        let item2 = UIBarButtonItem(title: str, style: .plain, target:self, action:#selector(favouritePressed))
+        self.navigationItem.rightBarButtonItems = [item1, item2]
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -130,9 +142,15 @@ class EventEditViewController: UIViewController, UISearchBarDelegate, UIImagePic
         // update notify
         registerNotify(event: eve!)
         // goback
-        self.delegate?.updateEvent(event: self.event)
+        self.delegate?.updateEventInfo(event: self.event)
         self.navigationController?.popViewController(animated: true)
-        
+    }
+    
+    @objc func favouritePressed() {
+        self.event.favourite = !self.event.favourite
+        updateEvent(eventObj: self.event)
+        self.refreshRightBarButtonitems()
+        self.delegate?.updateEventInfo(event: self.event)
     }
     
     // MARK: - DatePicker

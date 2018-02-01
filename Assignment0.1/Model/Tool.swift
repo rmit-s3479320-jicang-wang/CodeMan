@@ -3,6 +3,16 @@ import UIKit
 import UserNotifications
 import Photos
 
+struct Platform {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }()
+}
+
 let kEventNotifyIdentifierKey = "identifier"
 
 // MARK: - Alert
@@ -32,13 +42,24 @@ extension UIViewController{
     }
     
     func showPhotoActionSheet(cameraHandler:@escaping () -> Void, photoHandler:@escaping () -> Void) {
+        
+        var msg:String
+        if Platform.isSimulator {
+            msg = "Please photo!"
+        }else{
+            msg = "Please camera or photo!"
+        }
         let alertController = UIAlertController(title: nil,
-                                                message: "Please camera or photo!",
+                                                message: msg,
                                                 preferredStyle: .actionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            cameraHandler()
-        })
+        
+        var cameraAction:UIAlertAction!
+        if !Platform.isSimulator {
+            cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                cameraHandler()
+            })
+        }
         let photoAction = UIAlertAction(title: "Photo", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             photoHandler()
@@ -46,7 +67,9 @@ extension UIViewController{
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
-        alertController.addAction(cameraAction)
+        if cameraAction != nil {
+            alertController.addAction(cameraAction)
+        }
         alertController.addAction(photoAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

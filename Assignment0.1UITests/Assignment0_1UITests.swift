@@ -64,12 +64,10 @@ class Assignment0_1UITests: XCTestCase {
         sleep(1)
         
         navigation?.buttons["Event"].tap()
-        tabbars?.buttons["Featured"].tap()
-        self.app?.buttons["Delete All Event"].tap()
+        navigation?.buttons["Delete All"].tap()
         
         sleep(1)
         self.app?.alerts.buttons["Yes"].tap()
-        tabbars?.buttons["Home"].tap()
         sleep(1)
         
         cells = self.app?.tables.element.cells

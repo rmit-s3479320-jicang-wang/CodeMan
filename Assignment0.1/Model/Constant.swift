@@ -27,13 +27,18 @@ extension Event{
         return Date(timeIntervalSince1970: self.time)
     }
     
-    func photoImage() -> UIImage {
-        return UIImage(data: self.photo!)!;
+    func photoImage() -> UIImage? {
+        if self.photo != nil {
+            return UIImage(data: self.photo!);
+        }
+        return nil
     }
     
-    func setPhotoImage(image: UIImage) {
-        let imageData = UIImagePNGRepresentation(image)
-        self.photo = imageData
+    func setPhotoImage(image: UIImage?) {
+        if image != nil {
+            let imageData = UIImagePNGRepresentation(image!)
+            self.photo = imageData
+        }
     }
     
 }
@@ -47,6 +52,7 @@ class EventObject: NSObject {
     public var photo: UIImage?
     public var time: Double
     public var title: String?
+    public var favourite: Bool
     
     override init() {
         self.address = ""
@@ -57,6 +63,7 @@ class EventObject: NSObject {
         self.photo = nil
         self.time = 0
         self.title = ""
+        self.favourite = false
         super.init()
     }
     public class func copyEvent(event: Event) -> EventObject? {
@@ -69,6 +76,7 @@ class EventObject: NSObject {
         eventObj.longitude = event.longitude
         eventObj.photo = event.photoImage()
         eventObj.time = event.time
+        eventObj.favourite = event.favourite
         return eventObj
     }
     
@@ -94,9 +102,10 @@ func saveEvent(eventObj: EventObject) -> Event? {
     event.identifier = eventObj.identifier
     event.latitude = eventObj.latitude
     event.longitude = eventObj.longitude
-    event.setPhotoImage(image: eventObj.photo!)
+    event.setPhotoImage(image: eventObj.photo)
     event.time = eventObj.time
     event.title = eventObj.title
+    event.favourite = eventObj.favourite
     appDelegate.saveContext()
     return event
 }
@@ -108,9 +117,10 @@ func updateEvent(eventObj: EventObject) -> Event? {
         event.identifier = eventObj.identifier
         event.latitude = eventObj.latitude
         event.longitude = eventObj.longitude
-        event.setPhotoImage(image: eventObj.photo!)
+        event.setPhotoImage(image: eventObj.photo)
         event.time = eventObj.time
         event.title = eventObj.title
+        event.favourite = eventObj.favourite
         appDelegate.saveContext()
         return event
     }
@@ -150,6 +160,19 @@ func fetchPastData() -> Array<Event>?{
     let context = appDelegate.persistentContainer.viewContext
     let fetchRequest = Event.fr()
     fetchRequest.predicate = NSPredicate(format: "time < %f", nowTime)
+    do {
+        let fetchedResults = try context.fetch(fetchRequest)
+        return fetchedResults
+    } catch  {
+        fatalError("fetchFutureData fail!")
+    }
+    return nil
+}
+
+func fetchFavouriteData() -> Array<Event>? {
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = Event.fr()
+    fetchRequest.predicate = NSPredicate(format: "favourite == true")
     do {
         let fetchedResults = try context.fetch(fetchRequest)
         return fetchedResults

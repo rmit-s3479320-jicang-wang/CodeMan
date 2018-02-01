@@ -21,12 +21,11 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Event"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target:self, action:#selector(editPressed))
-        
+        self.refreshRightBarButtonitems()
         self.dayLabel.text = "00"
         self.hoursLabel.text = "00"
         self.minutesLabel.text = "00"
-        updateEvent(event: self.event)
+        updateEventInfo(event: self.event)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +53,18 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     
     func setEvent(event:Event) {
         self.event = EventObject.copyEvent(event: event)!;
+    }
+    
+    func refreshRightBarButtonitems() {
+        var str:String
+        if self.event.favourite {
+            str = "Cancel favourite";
+        }else{
+            str = "Favourite"
+        }
+        let item1 = UIBarButtonItem(title: "Edit", style: .plain, target:self, action:#selector(editPressed))
+        let item2 = UIBarButtonItem(title: str, style: .plain, target:self, action:#selector(favouritePressed))
+        self.navigationItem.rightBarButtonItems = [item1, item2]
     }
     
     @objc func countDown() {
@@ -88,10 +99,17 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
         self.show(vc, sender: nil)
     }
     
+    @objc func favouritePressed() {
+        self.event.favourite = !self.event.favourite
+        updateEvent(eventObj: self.event)
+        self.refreshRightBarButtonitems()
+    }
+    
     // MARK: - EventEditDelegate
-    func updateEvent(event: EventObject) {
+    func updateEventInfo(event: EventObject) {
         self.event = event
         
+        self.refreshRightBarButtonitems()
         self.dateLabel.text = self.event.dateToString()
         self.titleLabel.text = self.event.title
         self.descLabel.text = self.event.describe

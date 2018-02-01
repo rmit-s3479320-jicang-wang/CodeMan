@@ -2,6 +2,9 @@
 
 import UIKit
 import UserNotifications
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -17,30 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                     completionHandler: {(granted, error) in
                                         if granted {
                                             print("The notification granted")
-                                            self.sendNotify()
                                         }else{
                                             print(error?.localizedDescription ?? "error")
                                         }
         })
-        
-        if let todo = fetchData(){
-            todoList = todo
-        }else{
-            todoList = []
-        }
         return true
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        saveData(todoList: todoList!)
+        self.saveContext();
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveData(todoList: todoList!)
-    }
-    
-    func sendNotify() {
-        
+        self.saveContext();
     }
     
     // MARK: - UNUserNotificationCenterDelegate
@@ -63,6 +55,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         completionHandler([.sound, .alert])
+    }
+    
+    
+    // MARK: - Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MyData")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
 

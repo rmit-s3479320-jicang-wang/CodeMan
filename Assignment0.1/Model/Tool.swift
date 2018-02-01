@@ -33,28 +33,27 @@ extension UIViewController{
 
 // MARK: - Notify
 func registerNotify(event: Event) {
-    
     let nowTime = Date().timeIntervalSince1970
-    if event.timestamp <= nowTime {
+    if event.time <= nowTime {
         return
     }
-    
     let content = UNMutableNotificationContent()
-    content.title = event.title
-    content.subtitle = "address:" + event.address
-    content.body = event.desc
-    content.userInfo = [kEventNotifyIdentifierKey: event.identifier]
+    content.title = event.title!
+    content.subtitle = "address:" + event.address!
+    content.body = event.describe!
+    content.userInfo = [kEventNotifyIdentifierKey: event.identifier!]
     
-    let time = event.timestamp - nowTime
+    let time = event.time - nowTime
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
-    let request = UNNotificationRequest(identifier: event.identifier, content: content, trigger: trigger)
-    
+    let request = UNNotificationRequest(identifier: event.identifier!,
+                                        content: content,
+                                        trigger: trigger)
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 }
 
 func removeNotify(event: Event) {
-    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifier])
-    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [event.identifier])
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifier!])
+    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [event.identifier!])
 }
 
 func removeAllNotify() {

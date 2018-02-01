@@ -17,7 +17,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     
     let datePicker = UIDatePicker()
     
-    let event = Event()
+    let event = Event.initEvent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +46,9 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
         }
         
         self.event.title = textField.text!
-        self.event.desc = descTextField.text!
+        self.event.describe = descTextField.text!
         self.event.identifier = NSUUID().uuidString
-        
-        todoList?.insert(self.event, at: 0)
+        appDelegate.saveContext()
         registerNotify(event: self.event)
         self.navigationController?.popViewController(animated: true)
     }
@@ -75,7 +74,7 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     }
     
     @objc func donePressed(){
-        self.event.timestamp = self.datePicker.date.timeIntervalSince1970
+        self.event.time = self.datePicker.date.timeIntervalSince1970
         // formate date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long

@@ -34,7 +34,7 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
         
         self.titleTextField.text = self.event.title
         self.dateTextField.text = self.event.dateToString()
-        self.descTextField.text = self.event.desc
+        self.descTextField.text = self.event.describe
         self.searchBarMap.text = self.event.address
         self.datePicker.date = self.event.date()
         
@@ -75,22 +75,11 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
         }
         
         self.event.title = self.titleTextField.text!
-        self.event.desc = self.descTextField.text!
-        
-        if let todo = todoList{
-            
-            var i:Int = 0
-            for tempEvent in todo{
-                if self.event.identifier == tempEvent.identifier{
-                    todoList?[i] = self.event
-                    // goback
-                    self.delegate?.updateEvent(event: self.event)
-                    self.navigationController?.popViewController(animated: true)
-                    break
-                }
-                i+=1
-            }
-        }
+        self.event.describe = self.descTextField.text!
+        appDelegate.saveContext()
+        // goback
+        self.delegate?.updateEvent(event: self.event)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -115,7 +104,7 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
     }
     
     @objc func donePressed(){
-        self.event.timestamp = self.datePicker.date.timeIntervalSince1970
+        self.event.time = self.datePicker.date.timeIntervalSince1970
         // formate date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long

@@ -14,7 +14,7 @@ class FeatureViewController: UIViewController {
                        message: "Do you want to delete the event?",
                        sureHandler: {
                         // delete all
-                        todoList?.removeAll()
+                        deleteAllEvent()
                         // delete all notify
                         removeAllNotify()
         })

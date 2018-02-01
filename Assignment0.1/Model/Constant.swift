@@ -1,101 +1,42 @@
 
 import Foundation
-import MapKit
+import CoreData
 
 // MARK: - Event
-let kTitle = "title"
-let kDesc = "desc"
-let kDateTimestamp = "dateTimestamp"
-let kLon = "longitude"
-let kLat = "latitude"
-let kAddress = "address"
-let kIdentifier = "identifier"
-
-class Event : NSObject{
-    var identifier: String
-    var title: String
-    var desc: String
-    var timestamp: TimeInterval
-    var longitude: CLLocationDegrees
-    var latitude: CLLocationDegrees
-    var address: String
+extension Event{
     
-    override init() {
-        self.identifier = ""
-        self.title = ""
-        self.desc = ""
-        self.timestamp = 0
-        self.longitude = 0
-        self.latitude = 0
-        self.address = ""
-        super.init()
+    public class func initEvent() -> Event {
+        return Event(context: appDelegate.persistentContainer.viewContext)
+    }
+    
+    @nonobjc public class func fr() -> NSFetchRequest<Event> {
+        return NSFetchRequest<Event>(entityName: "Event")
     }
     
     func dateToString() -> String {
-        if self.timestamp == 0{
+        if self.time == 0{
             return ""
         }
-        let date:Date = Date(timeIntervalSince1970: self.timestamp)
+        let date:Date = Date(timeIntervalSince1970: self.time)
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd hh:mm a"
         return format.string(from: date)
     }
     
     func date() -> Date {
-        return Date(timeIntervalSince1970: self.timestamp)
+        return Date(timeIntervalSince1970: self.time)
     }
     
-    func day() -> Int {
-        let nowTime = Date().timeIntervalSince1970
-        return Int(floor((self.timestamp-nowTime)/(60*60*24)))
-    }
-    
-    func hour() -> Int {
-        let nowTime = Date().timeIntervalSince1970
-        return Int(floor((self.timestamp-nowTime)/(60*60)))
-    }
-    
-    func minute() -> Int {
-        let nowTime = Date().timeIntervalSince1970
-        return Int(floor((self.timestamp-nowTime)/60.0))
-    }
-}
-
-var todoList: Array<Event>?
-
-// MARK: - Event fetch
-func saveData(todoList:Array<Event>){
-    var list : [Dictionary<String , Any>] = [Dictionary<String, Any>]()
-    for event in todoList{
-        var dic:[String : Any] = [String : Any]()
-        dic[kTitle] = event.title
-        dic[kDesc] = event.desc
-        dic[kDateTimestamp] = event.timestamp
-        dic[kLon] = event.longitude
-        dic[kLat] = event.latitude
-        dic[kAddress] = event.address
-        dic[kIdentifier] = event.identifier
-        list.append(dic)
-    }
-    UserDefaults.standard.set(list, forKey: "todolist")
-    UserDefaults.standard.synchronize()
 }
 
 func fetchData() -> Array<Event>?{
-    if let todo = UserDefaults.standard.array(forKey: "todolist") as? Array<Dictionary<String, Any>>{
-        var arr:Array<Event> = []
-        for dic in todo{
-            let event = Event()
-            event.title = dic[kTitle] as! String
-            event.desc = dic[kDesc] as! String
-            event.timestamp = dic[kDateTimestamp] as! TimeInterval
-            event.longitude = dic[kLon] as! CLLocationDegrees
-            event.latitude = dic[kLat] as! CLLocationDegrees
-            event.address = dic[kAddress] as! String
-            event.identifier = dic[kIdentifier] as! String
-            arr.append(event)
-        }
-        return arr
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = Event.fr()
+    do {
+        let fetchedResults = try context.fetch(fetchRequest)
+        return fetchedResults
+    } catch  {
+        fatalError("fetchData fail!")
     }
     return nil
 }
@@ -103,29 +44,60 @@ func fetchData() -> Array<Event>?{
 func fetchFutureData() -> Array<Event>?{
     
     let nowTime = NSDate().timeIntervalSince1970
-    let resut = todoList?.filter({ (event) -> Bool in
-        let time = event.timestamp
-        return time >= nowTime
-    })
-    return resut
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = Event.fr()
+    fetchRequest.predicate = NSPredicate(format: "time >= %f", nowTime)
+    do {
+        let fetchedResults = try context.fetch(fetchRequest)
+        return fetchedResults
+    } catch  {
+        fatalError("fetchFutureData fail!")
+    }
+    return nil
 }
 
 func fetchPastData() -> Array<Event>?{
     
     let nowTime = NSDate().timeIntervalSince1970
-    let resut = todoList?.filter({ (event) -> Bool in
-        let time = event.timestamp
-        return time < nowTime
-    })
-    return resut
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = Event.fr()
+    fetchRequest.predicate = NSPredicate(format: "time < %f", nowTime)
+    do {
+        let fetchedResults = try context.fetch(fetchRequest)
+        return fetchedResults
+    } catch  {
+        fatalError("fetchFutureData fail!")
+    }
+    return nil
 }
 
 func fetchEvent(identifier: String) -> Event? {
-    if let todo = todoList {
-        let event = todo.filter({ (event) -> Bool in
-            return event.identifier == identifier
-        })
-        return event.first
+    let context = appDelegate.persistentContainer.viewContext
+    let fetchRequest = Event.fr()
+    fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+    do {
+        let fetchedResults = try context.fetch(fetchRequest)
+        return fetchedResults.first
+    } catch {
+        fatalError("fetchEvent fail!")
     }
     return nil
+}
+
+func deleteEvent(event: Event) {
+    let context = appDelegate.persistentContainer.viewContext
+    context.delete(event)
+    appDelegate.saveContext()
+}
+
+func deleteAllEvent() {
+    let fetchRequest = Event.fr()
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+    let store = appDelegate.persistentContainer.persistentStoreCoordinator
+    let context = appDelegate.persistentContainer.viewContext
+    do {
+        try store.execute(deleteRequest, with: context)
+    } catch {
+        fatalError("deleteAllEvent fail!")
+    }
 }

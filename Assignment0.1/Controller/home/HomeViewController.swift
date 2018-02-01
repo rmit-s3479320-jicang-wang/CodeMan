@@ -60,16 +60,8 @@ class HomeViewController: UIViewController , UITableViewDelegate, UITableViewDat
             if let todo = list{
                 
                 let event = todo[indexPath.row]
-                var i:Int = 0
-                for tempEvent in todoList!{
-                    if event.identifier == tempEvent.identifier{
-                        removeNotify(event: event)
-                        todoList?.remove(at: i)
-                        break
-                    }
-                    i+=1
-                }
-                
+                removeNotify(event: event)
+                deleteEvent(event: event)
                 self.list?.remove(at: indexPath.row)
                 tableView.reloadData()
             }

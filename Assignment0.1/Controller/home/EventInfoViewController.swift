@@ -58,7 +58,7 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     @objc func countDown() {
         
         let nowTime = Date().timeIntervalSince1970
-        let eventTime = self.event.timestamp
+        let eventTime = self.event.time
         let timeLag = eventTime - nowTime
         if timeLag <= 0 {
             self.timer.invalidate()
@@ -95,7 +95,7 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
         
         self.dateLabel.text = self.event.dateToString()
         self.titleLabel.text = self.event.title
-        self.descLabel.text = self.event.desc
+        self.descLabel.text = self.event.describe
         self.addressLabel.text = self.event.address
         
         let anno = MKPointAnnotation()

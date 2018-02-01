@@ -5,7 +5,7 @@ import MapKit
 // event info controller
 class EventInfoViewController: UIViewController, EventEditDelegate {
 
-    var event:Event = Event()
+    var event:EventObject = EventObject()
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
@@ -13,6 +13,7 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     
     var timer: Timer!
@@ -52,7 +53,7 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     }
     
     func setEvent(event:Event) {
-        self.event = event;
+        self.event = EventObject.copyEvent(event: event)!;
     }
     
     @objc func countDown() {
@@ -88,15 +89,14 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     }
     
     // MARK: - EventEditDelegate
-    func updateEvent(event: Event) {
+    func updateEvent(event: EventObject) {
         self.event = event
-        // update notify
-        registerNotify(event: event)
         
         self.dateLabel.text = self.event.dateToString()
         self.titleLabel.text = self.event.title
         self.descLabel.text = self.event.describe
         self.addressLabel.text = self.event.address
+        self.photoView.image = self.event.photo
         
         let anno = MKPointAnnotation()
         anno.coordinate = CLLocationCoordinate2DMake(self.event.latitude, self.event.longitude)

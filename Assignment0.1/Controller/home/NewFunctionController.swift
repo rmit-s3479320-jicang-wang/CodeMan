@@ -2,9 +2,10 @@
 import UIKit
 import MapKit
 import EventKit
+import Photos
 
 // add event controller
-class NewFunctionController: UIViewController, UISearchBarDelegate{
+class NewFunctionController: UIViewController, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     // title
     @IBOutlet weak var textField: UITextField!
@@ -12,17 +13,66 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var descTextField: UITextField!
     // datetime
     @IBOutlet weak var datePickerTxt: UITextField!
+    // photo
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet var searchBarMap: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
     
+    var cameraPicker: UIImagePickerController!{
+        get{
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .camera
+            return picker
+        }
+    }
+    var photoPicker: UIImagePickerController!{
+        get{
+            let picker =  UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            return picker
+        }
+    }
+    
     let datePicker = UIDatePicker()
     
-    let event = Event.initEvent()
+    let event = EventObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
         searchBarMap.delegate = self
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.photoView.image = image
+        self.event.photo = image
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - add photo
+    @IBAction func addPhotoPressed(_ sender: UIBarButtonItem) {
+        self.showPhotoActionSheet(cameraHandler: {
+            
+            authorizeToAlbum(completion: { (authorized) in
+                if authorized {
+                    self.present(self.cameraPicker, animated: true, completion: nil)
+                }else{
+                    self.showAlert(message: "Please allow me to open your album!")
+                }
+            })
+        }) {
+            authorizeToCamera(completion: { (authorized) in
+                if authorized {
+                    self.present(self.photoPicker, animated: true, completion: nil)
+                }else{
+                    self.showAlert(message: "Please allow me to open your camera!")
+                }
+            })
+        }
     }
     
     // MARK: - add todo list
@@ -48,8 +98,9 @@ class NewFunctionController: UIViewController, UISearchBarDelegate{
         self.event.title = textField.text!
         self.event.describe = descTextField.text!
         self.event.identifier = NSUUID().uuidString
-        appDelegate.saveContext()
-        registerNotify(event: self.event)
+        
+        let eve = saveEvent(eventObj: self.event)
+        registerNotify(event: eve!)
         self.navigationController?.popViewController(animated: true)
     }
     

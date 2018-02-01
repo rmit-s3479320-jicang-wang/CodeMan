@@ -4,19 +4,37 @@ import MapKit
 
 protocol EventEditDelegate {
     
-    func updateEvent(event:Event)
+    func updateEvent(event:EventObject)
 }
 
 // event edit controller
-class EventEditViewController: UIViewController, UISearchBarDelegate{
+class EventEditViewController: UIViewController, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    var event: Event = Event()
+    var event: EventObject = EventObject()
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var searchBarMap: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
+    
+    var cameraPicker: UIImagePickerController!{
+        get{
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .camera
+            return picker
+        }
+    }
+    var photoPicker: UIImagePickerController!{
+        get{
+            let picker =  UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            return picker
+        }
+    }
     
     var delegate: EventEditDelegate?
     
@@ -37,6 +55,7 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
         self.descTextField.text = self.event.describe
         self.searchBarMap.text = self.event.address
         self.datePicker.date = self.event.date()
+        self.photoView.image = self.event.photo
         
         let anno = MKPointAnnotation()
         anno.coordinate = CLLocationCoordinate2DMake(self.event.latitude,
@@ -51,8 +70,38 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
         self.mapView.selectAnnotation(anno, animated: true)
     }
 
-    func setEvent(event: Event) {
+    func setEvent(event: EventObject) {
         self.event = event;
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.photoView.image = image
+        self.event.photo = image
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - add photo
+    @IBAction func addPhotoPressed(_ sender: UIBarButtonItem) {
+        self.showPhotoActionSheet(cameraHandler: {
+            
+            authorizeToAlbum(completion: { (authorized) in
+                if authorized {
+                    self.present(self.cameraPicker, animated: true, completion: nil)
+                }else{
+                    self.showAlert(message: "Please allow me to open your album!")
+                }
+            })
+        }) {
+            authorizeToCamera(completion: { (authorized) in
+                if authorized {
+                    self.present(self.photoPicker, animated: true, completion: nil)
+                }else{
+                    self.showAlert(message: "Please allow me to open your camera!")
+                }
+            })
+        }
     }
     
     @objc func savePressed() {
@@ -76,7 +125,10 @@ class EventEditViewController: UIViewController, UISearchBarDelegate{
         
         self.event.title = self.titleTextField.text!
         self.event.describe = self.descTextField.text!
-        appDelegate.saveContext()
+        
+        let eve = updateEvent(eventObj: self.event)
+        // update notify
+        registerNotify(event: eve!)
         // goback
         self.delegate?.updateEvent(event: self.event)
         self.navigationController?.popViewController(animated: true)

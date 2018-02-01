@@ -1,6 +1,7 @@
 
 import UIKit
 import UserNotifications
+import Photos
 
 let kEventNotifyIdentifierKey = "identifier"
 
@@ -10,8 +11,8 @@ extension UIViewController{
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
-                                                preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -22,11 +23,32 @@ extension UIViewController{
     func showAlert(title: String, message: String, sureHandler:@escaping () -> Void) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
-                                                preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
             sureHandler()
         }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showPhotoActionSheet(cameraHandler:@escaping () -> Void, photoHandler:@escaping () -> Void) {
+        let alertController = UIAlertController(title: nil,
+                                                message: "Please camera or photo!",
+                                                preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            cameraHandler()
+        })
+        let photoAction = UIAlertAction(title: "Photo", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            photoHandler()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoAction)
+        alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
 }
@@ -60,4 +82,33 @@ func removeAllNotify() {
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     UNUserNotificationCenter.current().removeAllDeliveredNotifications()
 }
+
+// MARK: - photo auth request
+func authorizeToAlbum(completion:@escaping (Bool)->Void) {
+    if PHPhotoLibrary.authorizationStatus() != .authorized {
+        PHPhotoLibrary.requestAuthorization({ (status) in
+            if status == .authorized {
+                DispatchQueue.main.async(execute: {
+                    completion(true)
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+                    completion(false)
+                })
+            }
+        })
+    } else {
+        DispatchQueue.main.async(execute: {
+            completion(true)
+        })
+    }
+}
+
+// MARK: - camera auth request
+func authorizeToCamera(completion:@escaping (Bool)->Void) {
+    AVCaptureDevice.requestAccess(for: .video) { (authorized) in
+        completion(authorized)
+    }
+}
+
 

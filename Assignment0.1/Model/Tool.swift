@@ -76,6 +76,17 @@ extension UIViewController{
     }
 }
 
+// MARK: - Preview picture
+extension UIViewController{
+    
+    func showPreviewPicture(image: UIImage?) {
+        let story = UIStoryboard(name: "Main", bundle:Bundle.main)
+        let vc = story.instantiateViewController(withIdentifier: "PicturePreview") as! PicturePreviewController
+        vc.image = image
+        self.present(vc, animated: false, completion: nil)
+    }
+}
+
 // MARK: - Notify
 func registerNotify(event: Event) {
     let nowTime = Date().timeIntervalSince1970

@@ -68,6 +68,17 @@ class EventEditViewController: UIViewController, UISearchBarDelegate, UIImagePic
         self.mapView.setRegion(region, animated: true)
         self.mapView.addAnnotation(anno)
         self.mapView.selectAnnotation(anno, animated: true)
+        
+        self.photoView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target:self, action:#selector(picturePressed))
+        self.photoView.gestureRecognizers = [tap]
+    }
+    
+    // MARK: - picture click
+    @objc func picturePressed() {
+        if self.photoView.image != nil {
+            self.showPreviewPicture(image: self.photoView.image)
+        }
     }
 
     func setEvent(event: EventObject) {

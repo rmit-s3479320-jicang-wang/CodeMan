@@ -26,6 +26,10 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
         self.hoursLabel.text = "00"
         self.minutesLabel.text = "00"
         updateEventInfo(event: self.event)
+        
+        self.photoView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target:self, action:#selector(picturePressed))
+        self.photoView.gestureRecognizers = [tap]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +53,13 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
             self.timer = nil
         }
         
+    }
+    
+    // MARK: - picture click
+    @objc func picturePressed() {
+        if self.photoView.image != nil {
+            self.showPreviewPicture(image: self.photoView.image)
+        }
     }
     
     func setEvent(event:Event) {

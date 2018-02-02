@@ -43,6 +43,16 @@ class NewFunctionController: UIViewController, UISearchBarDelegate, UIImagePicke
         super.viewDidLoad()
         createDatePicker()
         searchBarMap.delegate = self
+        self.photoView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target:self, action:#selector(picturePressed))
+        self.photoView.gestureRecognizers = [tap]
+    }
+    
+    // MARK: - picture click
+    @objc func picturePressed() {
+        if self.photoView.image != nil {
+            self.showPreviewPicture(image: self.photoView.image)
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate

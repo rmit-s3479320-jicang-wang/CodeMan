@@ -10,6 +10,12 @@
 		6D2599252016D4F700A740AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599242016D4F700A740AB /* HomeViewController.swift */; };
 		6D2599292016D7F200A740AB /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2599272016D7F200A740AB /* TodoListCell.swift */; };
 		6D39708C2025895800B0C890 /* Assignment0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D39708B2025895800B0C890 /* Assignment0_1Tests.swift */; };
+		6D5A17982025FD21000C73D5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0CFE72015E5DF00151DB4 /* Constant.swift */; };
+		6D5A17992025FDF7000C73D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06FC87200DD22000CCBAEC /* AppDelegate.swift */; };
+		6D5A179A2025FE2C000C73D5 /* EventInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3F9DD2017891100AD87E1 /* EventInfoViewController.swift */; };
+		6D5A179B2025FE2C000C73D5 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF2082018569500CBAB48 /* EventEditViewController.swift */; };
+		6D5A179C2025FE2C000C73D5 /* PicturePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9E36722024366900B28811 /* PicturePreviewController.swift */; };
+		6D5A179D2025FE41000C73D5 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE221B12018745B00171C28 /* Tool.swift */; };
 		6D8342A120187E4F00E48E3B /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8342A020187E4F00E48E3B /* ContactsViewController.swift */; };
 		6D8342B12018870800E48E3B /* Assignment0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8342B02018870800E48E3B /* Assignment0_1UITests.swift */; };
 		6D904FAF2021CA59000B69FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D904FAE2021CA59000B69FE /* CoreData.framework */; };
@@ -363,6 +369,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D5A179D2025FE41000C73D5 /* Tool.swift in Sources */,
+				6D5A179A2025FE2C000C73D5 /* EventInfoViewController.swift in Sources */,
+				6D5A179B2025FE2C000C73D5 /* EventEditViewController.swift in Sources */,
+				6D5A179C2025FE2C000C73D5 /* PicturePreviewController.swift in Sources */,
+				6D5A17992025FDF7000C73D5 /* AppDelegate.swift in Sources */,
+				6D5A17982025FD21000C73D5 /* Constant.swift in Sources */,
 				6DCE40E720258B4E0019FE01 /* Network.swift in Sources */,
 				6DCE40E420258ADF0019FE01 /* MyData.xcdatamodeld in Sources */,
 				6D39708C2025895800B0C890 /* Assignment0_1Tests.swift in Sources */,

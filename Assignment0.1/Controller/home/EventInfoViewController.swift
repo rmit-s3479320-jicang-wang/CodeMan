@@ -158,6 +158,7 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
         self.event = event
         
         self.refreshRightBarButtonitems()
+        self.refreshWeather()
         self.dateLabel.text = self.event.dateToString()
         self.titleLabel.text = self.event.title
         self.descLabel.text = self.event.describe

@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                             print(error?.localizedDescription ?? "error")
                                         }
         })
+        
+        queryWeather(latitude: 39.92642,
+                     longitude: 116.447591) { (response) in
+                        print("response: ", response!)
+        }
+        
         return true
     }
     

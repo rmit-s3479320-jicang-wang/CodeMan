@@ -16,6 +16,11 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var tempMaxLabel: UILabel!
+    @IBOutlet weak var tempMinLabel: UILabel!
+    
     var timer: Timer!
     
     override func viewDidLoad() {
@@ -25,7 +30,12 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
         self.dayLabel.text = "00"
         self.hoursLabel.text = "00"
         self.minutesLabel.text = "00"
+        self.weatherLabel.text = "Weather:"
+        self.tempLabel.text = "Temp:"
+        self.tempMaxLabel.text = "Temp max:"
+        self.tempMinLabel.text = "Temp min:"
         updateEventInfo(event: self.event)
+        self.refreshWeather()
         
         self.photoView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target:self, action:#selector(picturePressed))
@@ -53,6 +63,33 @@ class EventInfoViewController: UIViewController, EventEditDelegate {
             self.timer = nil
         }
         
+    }
+    
+    // MARK: - refresh weather
+    func refreshWeather() {
+        queryWeather(latitude: self.event.latitude,
+                     longitude: self.event.longitude) { (response) in
+                        if response != nil {
+                            if (response?.object(forKey: "weather")) != nil{
+                                let arr = response?.object(forKey: "weather") as! NSArray
+                                let weather = arr.firstObject as! NSDictionary
+                                let desc = weather.object(forKey: "description") as! String
+                                self.weatherLabel.text = "Weather: "+desc
+                                
+                                let main = response?.object(forKey: "main") as! NSDictionary
+                                var temp = main.object(forKey: "temp") as! Double
+                                temp = ceil(temp-273.15)
+                                self.tempLabel.text = "Temp: \(temp)°C"
+                                var tempMax = main.object(forKey: "temp_max") as! Double
+                                tempMax = ceil(tempMax-273.15)
+                                self.tempMaxLabel.text = "Temp max: \(tempMax)°C"
+                                var tempMin = main.object(forKey: "temp_min") as! Double
+                                tempMin = ceil(tempMin-273.15)
+                                self.tempMinLabel.text = "Temp min: \(tempMin)°C"
+                            }
+                            
+                        }
+        }
     }
     
     // MARK: - picture click
